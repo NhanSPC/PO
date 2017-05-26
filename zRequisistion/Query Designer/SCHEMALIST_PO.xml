@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PBS_SCHEMA>
+
+  <row table="SEV" Description="Supplier Evaluation" module="PO"/>
+  
+</PBS_SCHEMA>

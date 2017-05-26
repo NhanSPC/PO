@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <!--SEV - Supplier Evaluation-->
+  <DBO name="pbs_PO_SUPPLIER_EVALUATION_{XXX}" type="U">
+    <Install>
+      CREATE TABLE IF NOT EXISTS pbs_PO_SUPPLIER_EVALUATION_{XXX}(
+      [SUPPLIER_CODE] [varchar](15) NOT NULL,
+      [ITEM_CODE] [varchar](15) NOT NULL,
+      [EFFECTIVE_DATE] [int] NOT NULL,
+      [SUSPENDED] [char](1) NOT NULL,
+      [VALUE0] [decimal](18, 2) NOT NULL,
+      [VALUE1] [decimal](18, 2) NOT NULL,
+      [VALUE2] [decimal](18, 2) NOT NULL,
+      [VALUE3] [decimal](18, 2) NOT NULL,
+      [VALUE4] [decimal](18, 2) NOT NULL,
+      [VALUE5] [decimal](18, 2) NOT NULL,
+      [VALUE6] [decimal](18, 2) NOT NULL,
+      [VALUE7] [decimal](18, 2) NOT NULL,
+      [VALUE8] [decimal](18, 2) NOT NULL,
+      [VALUE9] [decimal](18, 2) NOT NULL,
+      [NOTES] [nvarchar](200) NOT NULL,
+      [UPDATED] [int] NOT NULL,
+      [UPDATED_BY] [varchar](15) NOT NULL,
+      [TIME_STAMP] [timestamp] NULL,
+      PRIMARY KEY
+      (
+      [SUPPLIER_CODE] ASC,
+      [ITEM_CODE] ASC
+      )
+      )
+      
+    </Install>
+  </DBO>
+  <DBO name="pbs_PO_SUPPLIER_EVALUATION_{XXX}_InsertUpdate" type="P">
+    <Install>
+      INSERT OR IGNORE INTO system_STORED_PROCEDURES VALUES('pbs_PO_SUPPLIER_EVALUATION_{XXX}_InsertUpdate','INSERT OR REPLACE INTO [pbs_PO_SUPPLIER_EVALUATION_{XXX}] (
+      [SUPPLIER_CODE],
+      [ITEM_CODE],
+      [EFFECTIVE_DATE],
+      [SUSPENDED],
+      [VALUE0],
+      [VALUE1],
+      [VALUE2],
+      [VALUE3],
+      [VALUE4],
+      [VALUE5],
+      [VALUE6],
+      [VALUE7],
+      [VALUE8],
+      [VALUE9],
+      [NOTES],
+      [UPDATED],
+      [UPDATED_BY]
+      ) VALUES (
+      @SUPPLIER_CODE,
+      @ITEM_CODE,
+      @EFFECTIVE_DATE,
+      @SUSPENDED,
+      @VALUE0,
+      @VALUE1,
+      @VALUE2,
+      @VALUE3,
+      @VALUE4,
+      @VALUE5,
+      @VALUE6,
+      @VALUE7,
+      @VALUE8,
+      @VALUE9,
+      @NOTES,
+      @UPDATED,
+      @UPDATED_BY
+      )
+      '
+      )
+    </Install>
+  </DBO>
+</Root>

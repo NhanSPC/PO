@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <!--SEV - Supplier Evaluation-->
+  <DBO name="pbs_PO_SUPPLIER_EVALUATION_{XXX}" type="U">
+    <Install>
+      IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id=OBJECT_ID(N'dbo.[pbs_PO_SUPPLIER_EVALUATION_{XXX}]'))
+      BEGIN
+      CREATE TABLE [dbo].[pbs_PO_SUPPLIER_EVALUATION_{XXX}](
+      [SUPPLIER_CODE] [varchar](15) NOT NULL,
+      [ITEM_CODE] [varchar](15) NOT NULL,
+      [EFFECTIVE_DATE] [int] NOT NULL,
+      [SUSPENDED] [char](1) NOT NULL,
+      [VALUE0] [decimal](18, 2) NOT NULL,
+      [VALUE1] [decimal](18, 2) NOT NULL,
+      [VALUE2] [decimal](18, 2) NOT NULL,
+      [VALUE3] [decimal](18, 2) NOT NULL,
+      [VALUE4] [decimal](18, 2) NOT NULL,
+      [VALUE5] [decimal](18, 2) NOT NULL,
+      [VALUE6] [decimal](18, 2) NOT NULL,
+      [VALUE7] [decimal](18, 2) NOT NULL,
+      [VALUE8] [decimal](18, 2) NOT NULL,
+      [VALUE9] [decimal](18, 2) NOT NULL,
+      [NOTES] [nvarchar](200) NOT NULL,
+      [UPDATED] [int] NOT NULL,
+      [UPDATED_BY] [varchar](15) NOT NULL,
+      [TIME_STAMP] [timestamp] NULL,
+      CONSTRAINT [PK_pbs_PO_SUPPLIER_EVALUATION_{XXX}] PRIMARY KEY CLUSTERED
+      (
+      [SUPPLIER_CODE] ASC,
+      [ITEM_CODE] ASC
+      )
+      )
+      END
+    </Install>
+  </DBO>
+  <DBO name="pbs_PO_SUPPLIER_EVALUATION_{XXX}_InsertUpdate" type="P">
+    <Install>
+      IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[pbs_PO_SUPPLIER_EVALUATION_{XXX}_InsertUpdate]') AND OBJECTPROPERTY(id,N'IsProcedure') = 1)
+      BEGIN
+      EXEC dbo.sp_executesql @statement = N'
+      CREATE PROCEDURE [pbs_PO_SUPPLIER_EVALUATION_{XXX}_InsertUpdate]
+      @SUPPLIER_CODE varchar(15),
+      @ITEM_CODE varchar(15),
+      @EFFECTIVE_DATE int,
+      @SUSPENDED char(1),
+      @VALUE0 decimal(18, 2),
+      @VALUE1 decimal(18, 2),
+      @VALUE2 decimal(18, 2),
+      @VALUE3 decimal(18, 2),
+      @VALUE4 decimal(18, 2),
+      @VALUE5 decimal(18, 2),
+      @VALUE6 decimal(18, 2),
+      @VALUE7 decimal(18, 2),
+      @VALUE8 decimal(18, 2),
+      @VALUE9 decimal(18, 2),
+      @NOTES nvarchar (200),
+      @UPDATED int,
+      @UPDATED_BY varchar(15)
+      AS
+
+      SET NOCOUNT ON
+
+      IF EXISTS(SELECT SUPPLIER_CODE,ITEM_CODE FROM [pbs_PO_SUPPLIER_EVALUATION_{XXX}] WHERE [SUPPLIER_CODE] = @SUPPLIER_CODE AND [ITEM_CODE] = @ITEM_CODE)
+      BEGIN
+      UPDATE [pbs_PO_SUPPLIER_EVALUATION_{XXX}] SET
+      [EFFECTIVE_DATE] = @EFFECTIVE_DATE,
+      [SUSPENDED] = @SUSPENDED,
+      [VALUE0] = @VALUE0,
+      [VALUE1] = @VALUE1,
+      [VALUE2] = @VALUE2,
+      [VALUE3] = @VALUE3,
+      [VALUE4] = @VALUE4,
+      [VALUE5] = @VALUE5,
+      [VALUE6] = @VALUE6,
+      [VALUE7] = @VALUE7,
+      [VALUE8] = @VALUE8,
+      [VALUE9] = @VALUE9,
+      [NOTES] = @NOTES,
+      [UPDATED] = @UPDATED,
+      [UPDATED_BY] = @UPDATED_BY
+      WHERE [SUPPLIER_CODE] = @SUPPLIER_CODE AND [ITEM_CODE] = @ITEM_CODE
+      END
+      ELSE
+      BEGIN
+      INSERT INTO [pbs_PO_SUPPLIER_EVALUATION_{XXX}] (
+      [SUPPLIER_CODE],
+      [ITEM_CODE],
+      [EFFECTIVE_DATE],
+      [SUSPENDED],
+      [VALUE0],
+      [VALUE1],
+      [VALUE2],
+      [VALUE3],
+      [VALUE4],
+      [VALUE5],
+      [VALUE6],
+      [VALUE7],
+      [VALUE8],
+      [VALUE9],
+      [NOTES],
+      [UPDATED],
+      [UPDATED_BY]
+      ) VALUES (
+      @SUPPLIER_CODE,
+      @ITEM_CODE,
+      @EFFECTIVE_DATE,
+      @SUSPENDED,
+      @VALUE0,
+      @VALUE1,
+      @VALUE2,
+      @VALUE3,
+      @VALUE4,
+      @VALUE5,
+      @VALUE6,
+      @VALUE7,
+      @VALUE8,
+      @VALUE9,
+      @NOTES,
+      @UPDATED,
+      @UPDATED_BY
+      )
+      END'
+      END
+    </Install>
+  </DBO>
+ </Root>
