@@ -21,11 +21,11 @@ Namespace PO.DB
 
         Public Sub Install(ByRef Messages As List(Of String)) Implements IScriptInstaller.Install
 
-            'If Context.UseSQLite Then
-            'InstallSQLite(Messages)
-            'Else
-            InstallSQL(Messages)
-            'End If
+            If Context.UseSQLite Then
+                InstallSQLite(Messages)
+            Else
+                InstallSQL(Messages)
+            End If
 
         End Sub
 
